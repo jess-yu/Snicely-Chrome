@@ -1,0 +1,69 @@
+.snicely-button {
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    color: #fff;
+    font-size: 14px;
+    padding: 10px 25px;
+}
+
+.snicely-modal-container {
+    display: flex;
+    background-color: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 1000;
+    opacity: 0;
+    pointer-events: none;
+    height: 100%;
+    width: 100%;
+    transition: opacity 0.3s ease;
+}
+
+.snicely-good {
+    background-color: #77BB3F;
+    color: white;
+}
+
+.snicely-bad {
+    background-color: rgb(180, 80, 80);
+}
+
+.snicely-good-light {
+    background-color: #bed8a9;
+    color: white;
+}
+
+.snicely-bad-light {
+    background-color: rgb(218, 166, 166);
+    color: #000;
+}
+
+.snicely-modal-container.show {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.snicely-modal {
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    padding: 30px 50px;
+    width: 600px;
+    max-width: 100%;
+    text-align: center;
+    font-size: 20px;
+}
+
+.snicely-modal .snicely-button{
+    margin-top: 20px;
+}
+
+.snicely-hide {
+    opacity: 0;
+    margin: 0;
+    height: 0;
+    width: 0;
+}

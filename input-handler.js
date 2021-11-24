@@ -10,20 +10,24 @@ function validateText(text) {
    }
 }
 
-function writingHandler(e) {
+function handleInput(e) {
     if (e.keyCode === 13){
         if (validateText(e.target.innerText)) {
             e.preventDefault();
-            alert("Hi There! This does not sound very nice! Perhaps there is a better way to say it? Can you reword and rephrase it?")
+            setToxicLanguageColors()
+            showSnicelyModal()
+        } else {
+            setSniceColors()
         }
     }
 }
 
-function listenToText(e) {
+function listenForUserInput(e) {
     element = e.target
     if (element && element.isContentEditable){
-        element.addEventListener('keydown', writingHandler)
+        setupVisualComponents(element)
+        element.addEventListener('keydown', handleInput)
     }
 }
 
-window.addEventListener('focus', listenToText, true)
+window.addEventListener('focus', listenForUserInput, true)

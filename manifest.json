@@ -17,7 +17,8 @@
     "content_scripts": [
         {
             "matches": ["<all_urls>"],
-            "js": ["content-script.js"]
+            "js": ["visual-components.js", "input-handler.js"],
+            "css": ["snicely-modal.css"]
         }
     ]
 }
