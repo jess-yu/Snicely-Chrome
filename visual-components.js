@@ -76,6 +76,7 @@ function setSniceColors() {
     snicelyModalButton.classList.add('snicely-good')
     snicelyModalButton.classList.add('snicely-hide')
     snicelyModalButton.classList.remove('snicely-bad')
+    var snicelyModalBody = document.getElementById('snicely-modal-body')
     snicelyModalBody.innerText = "Thank you for saying it Snicely! You are doing a great job!"
 }
 
