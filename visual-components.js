@@ -10,8 +10,9 @@ function setupVisualComponents(focusedElement) {
 
 function renderSnicelyButton(destinationElement){
     var theme = (currentLanguageNegative)? "snicely-bad" : "snicely-good"
+    var imgSrc = chrome.runtime.getURL((currentLanguageNegative)? "noun_sad_face_4204565.png" : "noun_chat_7797.png")
     var button = `<button id='snicely-button' class="snicely-button ${theme}">
-                S
+                <img src="${imgSrc}" id="snicely-img" height="35px" width="35px"/>
             </button>`
     destinationElement.insertAdjacentHTML('afterend', button)
     destinationElement.addEventListener('blur', function(e) {
@@ -62,6 +63,7 @@ function setToxicLanguageColors() {
     snicelyModalButton.classList.remove('snicely-hide')
     var snicelyModalBody = document.getElementById('snicely-modal-body')
     snicelyModalBody.innerText = "Hi There! This does not sound very snice, perhaps there is a better way to say it?"
+    document.getElementById('snicely-img').src = chrome.runtime.getURL('noun_sad_face_4204565.png')
 }
 
 function setSniceColors() {
@@ -78,6 +80,7 @@ function setSniceColors() {
     snicelyModalButton.classList.remove('snicely-bad')
     var snicelyModalBody = document.getElementById('snicely-modal-body')
     snicelyModalBody.innerText = "Thank you for saying it Snicely! You are doing a great job!"
+    document.getElementById('snicely-img').src = chrome.runtime.getURL('noun_chat_7797.png')
 }
 
 function hideSnicelyModal() {
