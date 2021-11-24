@@ -1,16 +1,3 @@
-var textAreas = document.querySelector('textarea');
-
-var textInput = document.querySelector('input[type="text"]')
-
-function listenToText(e) {
-    console.log("the event has been fired");
-}
-
-function submitText(e){
-    validateText(e.target.value);
-    return false
-}
-
 function validateText(text) {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", 'http://127.0.0.1:5000/validate');
@@ -27,5 +14,18 @@ function validateText(text) {
     xhr.send("text="+text);
 }
 
-textAreas.addEventListener('input', listenToText);
-textAreas.addEventListener('blur', submitText);
+function writingHandler(e) {
+    if (e.keyCode === 13){
+        validateText(e.target.innerText);
+        e.preventDefault();
+    }
+}
+
+function listenToText(e) {
+    element = e.target
+    if (element && element.isContentEditable){
+        element.addEventListener('keydown', writingHandler)
+    }
+}
+
+window.addEventListener('focus', listenToText, true)
