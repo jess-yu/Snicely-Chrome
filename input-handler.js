@@ -12,7 +12,8 @@ function validateText(text) {
 
 function handleInput(e) {
     if (e.keyCode === 13){
-        if (validateText(e.target.innerText)) {
+        text = e.target.innerText || e.target.value
+        if (validateText(text)) {
             e.preventDefault();
             setToxicLanguageColors()
             showSnicelyModal()
@@ -24,7 +25,12 @@ function handleInput(e) {
 
 function listenForUserInput(e) {
     element = e.target
-    if (element && element.isContentEditable){
+    if (element == undefined){
+        return
+    }
+    var isTextInput = element.tagName && element.tagName.toLowerCase() == "input" && element.getAttribute("type") == "text"
+    var isTextArea = element.tagName && element.tagName.toLowerCase() == "textarea"
+    if (element.isContentEditable || isTextArea || isTextInput){
         setupVisualComponents(element)
         element.addEventListener('keydown', handleInput)
     }
